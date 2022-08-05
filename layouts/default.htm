@@ -1,0 +1,55 @@
+description = "Default layout"
+default = true
+==
+<?php
+use Cms\Classes\Asset;
+use Cms\Classes\Theme;
+function onStart() {
+    // Cache bust the main styles file
+    $styles = (new Asset(Theme::getActiveTheme()))->find('dist/css/theme.css');
+    if ($styles) {
+        $this['lastmodified'] = $styles->mtime;
+    } else {
+        throw new \Exception("Asset files were not detected, try running artisan mix:install && artisan mix:compile -p theme-gworkshop");
+    }
+}
+?>
+==
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% partial "includes/head" %}
+    </head>
+    {% set pageId = this.page.id %}
+    {% set pageTitle = this.page.title %}
+    {% if pageId is empty %}
+        {% set pageId = page.id %}
+    {% endif %}
+    {% if pageTitle is empty %}
+        {% set pageTitle = page.title %}
+    {% endif %}
+    <body class="page-{{ pageId }} layout-{{ this.layout.id }}">
+        <div id="layout-wrapper">
+            <!-- Header -->
+            {% partial 'includes/header' %}
+            <!-- //Header -->
+    
+            {% if placeholder('cover') %}
+            <!-- Full width cover -->
+            {% placeholder cover %}
+            <!-- //Full width cover -->
+            {% endif %}
+    
+            <!-- Main Content -->
+            <main id="layout-content">
+                {% page %}
+            </main>
+            <!-- //Main Content -->
+    
+            {% partial "includes/footer" %}
+        </div>
+
+        {% partial "includes/foot" %}
+    </body>
+</html>

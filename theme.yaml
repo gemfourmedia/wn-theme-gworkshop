@@ -1,0 +1,25 @@
+name: "GWorkshop"
+description: "Gem Four Media starter theme for multiple projects"
+author: "Sang Dang - Gem Four Media"
+homepage: "https://gemfourmedia@gmail.com"
+code: "gworkshop"
+form:
+    fields:
+        googleanalytics_id:
+            label: themes.gworkshop::lang.options.googleanalytics_id
+            type: text
+            span: full
+        fb_app_id:
+            label: themes.gworkshop::lang.options.fb_app_id
+            type: text
+            span: full
+        color_primary:
+            label: themes.gworkshop::lang.options.color_primary
+            type: colorpicker
+            span: left
+            default: "#103141"
+        color_secondary:
+            label: themes.gworkshop::lang.options.color_secondary
+            type: colorpicker
+            span: right
+            default: "#2DA7C7"

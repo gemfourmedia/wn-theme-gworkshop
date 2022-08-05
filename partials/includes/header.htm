@@ -1,0 +1,22 @@
+<header class="text-primary bg-white relative" id="layout-header">
+    <div class="main-container">
+        <a href="#mobile-menu" class=" flex justify-center items-center text-gray-400 rounded-lg lg:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 ">
+            <span class="sr-only">{{'Menu'}}</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="black" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </a>
+        {% if gcompany.logo %}
+        <a class="navbar-brand w-28 sm:w-48 md:w-56 lg:w-56" href="{{'home'|page}}">
+            <img class="logo-img" src="{{gcompany.logo|media}}" alt="{{gcompany.full_name}} logo" width="375" height="96" loading="lazy"/>
+        </a>
+        {% endif %}
+        <nav class="" id="layout-mainnav">
+            <ul class="mainnav flex flex-col lg:flex-row lg:space-x-8">
+                <li><a href="{{'home'|page}}" class="nav-link {{this.page.id=='home' ? 'active' : ''}}">Home</a></li>
+                <li><a href="{{'about'|page}}" class="nav-link {{this.page.id=='about' ? 'active' : ''}}">About</a></li>
+                <li><a href="{{'services'|page}}" class="nav-link {{this.page.id=='services' ? 'active' : ''}}">Services</a></li>
+                <li><a href="{{'posts'|page}}" class="nav-link {{this.page.id=='posts' ? 'active' : ''}}">Blog</a></li>
+                <li><a href="{{'contact'|page}}" class="nav-link {{this.page.id=='contact' ? 'active' : ''}}">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

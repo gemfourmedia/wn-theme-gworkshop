@@ -1,0 +1,113 @@
+<title>
+    {% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %}
+    {% if gcompany.short_name %}
+        {{gcompany.short_name}}
+    {% endif %}
+</title>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="{{gcompany.short_name|default('Gem Four Media')}}">
+<meta name="generator" content="{{gcompany.short_name|default('Gem Four Media')}}">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+
+<meta name="title" content="{{ this.page.meta_title|default(this.page.title) }}">
+<meta name="description" content="{{ this.page.meta_description }}">
+<meta name="keywords" content="{{ this.page.meta_keywords }}">
+
+{% if this.page.og_title %}
+<meta property="og:title" content="{{ this.page.og_title|default(this.page.meta_title) }}">
+{% endif %}
+
+{% if this.page.og_description %}
+<meta property="og:description" content="{{ this.page.og_description|default(this.page.meta_description) }}">
+{% endif %}
+
+<meta property="og:site_name" content="{{ this.theme.sitename }}">
+<meta property="og:url" content="{{ this.page.baseFileName|page }}">
+
+{% if this.page.og_type %}
+<meta property="og:type" content="{{ seoTag.og_type }}">
+{% endif %}
+
+{% if this.page.og_image %}
+    <meta property="og:image" content="{{ (this.page.og_image.path|media)|app }}">
+    <meta property="og:image:width" content="{{ this.page.og_image.width }}">
+    <meta property="og:image:height" content="{{ this.page.og_image.height }}">
+{% endif %}
+
+{% if this.theme.fb_app_id %}
+<meta property="fb:app_id" content="{{ this.theme.fb_app_id }}">
+{% endif %}
+
+<meta name="twitter:title" content="{{ this.page.meta_title }}">
+<meta name="twitter:description" content="{{ this.page.meta_description }}">
+
+{% if this.page.og_image %}
+<meta name="twitter:image" content="{{ (this.page.og_image.path|media)|app }}">
+{% endif %}
+
+<link rel="canonical" href="{{ this.page.baseFileName|page }}">
+
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//maps.google.com" />
+<link rel="dns-prefetch" href="//www.facebook.com" />
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+<link rel="dns-prefetch" href="//static.xx.fbcdn.net" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//youtube.com" />
+<link rel="dns-prefetch" href="//www.youtube.com" />
+<link rel="dns-prefetch" href="//www.google.com" />
+<link rel="dns-prefetch" href="//static.doubleclick.net" />
+<link rel="dns-prefetch" href="//www.doubleclickbygoogle.com" />
+<link rel="dns-prefetch" href="//developers.google.com" />
+<link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+
+
+
+<!-- Fonts  -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+<!-- Vendors-->
+<link rel="stylesheet" href="{{'assets/vendors/swiper/swiper.min.css'|theme}}" />
+<link rel="stylesheet" href="{{'assets/vendors/swiper/effect-fade.min.css'|theme}}" />
+
+
+<!-- Main theme CSS -->
+<link rel="stylesheet" href="{{ 'assets/dist/css/theme.css' | theme }}?v={{ lastmodified }}">
+
+<style>
+    :root {
+        --primary: {{ this.theme.color_primary }};
+        --secondary: {{ this.theme.color_secondary }};
+    }
+</style>
+
+{% if gcompany.logo %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "{{url('/')}}",
+  "logo": "{{gcompany.logo|media}}"
+}
+</script>
+{% endif %}
+
+{% if this.theme.googleanalytics_id is not empty %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ this.theme.googleanalytics_id }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ this.theme.googleanalytics_id }}');
+</script>
+{% endif %}
+
+{% styles %}
+{% placeholder head %}
