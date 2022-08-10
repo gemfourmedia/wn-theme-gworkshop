@@ -1,0 +1,65 @@
+title = "Posts"
+url = "/posts/:category?/:page?"
+layout = "default"
+is_hidden = 0
+
+[gItems posts]
+perPage = 5
+pageNumber = "{{ :page }}"
+sortOrder = "published_at desc"
+groupFilter = "posts"
+categoryFilter = "{{ :category }}"
+authorFilter = "{{ null }}"
+serieFilter = "{{ null }}"
+tagFilter = "{{ null }}"
+setPageMeta = "category"
+
+[gShowCase latestPosts]
+perPage = 5
+pageNumber = "{{ :page }}"
+sortOrder = "published_at desc"
+groupFilter = "posts"
+categoryFilter = "{{ null }}"
+authorFilter = "{{ null }}"
+serieFilter = "{{ null }}"
+tagFilter = "{{ null }}"
+
+[gShowCase trendingPosts]
+perPage = 5
+pageNumber = "{{ :page }}"
+sortOrder = "published_at desc"
+showcase = "trending"
+groupFilter = "posts"
+categoryFilter = "{{ null }}"
+authorFilter = "{{ null }}"
+serieFilter = "{{ null }}"
+tagFilter = "{{ null }}"
+
+[gShowCase popularPosts]
+perPage = 12
+pageNumber = "{{ :page }}"
+sortOrder = "published_at desc"
+showcase = "popular"
+groupFilter = "posts"
+categoryFilter = "{{ null }}"
+authorFilter = "{{ null }}"
+serieFilter = "{{ null }}"
+tagFilter = "{{ null }}"
+
+[gCategories categories]
+groupFilter = "posts"
+currentCategory = "{{ :category }}"
+==
+<section class="section">
+    <div class="main-container grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-8">
+        <div class="lg:col-span-4">
+            {% component 'posts' %}
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-4 lg: gap-8">
+            {% component 'categories' %}
+            {% component 'latestPosts' %}
+            {% component 'trendingPosts' %}
+            {% component 'popularPosts' %}
+        </div>
+    </div>
+</section>

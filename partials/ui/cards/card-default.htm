@@ -1,0 +1,24 @@
+
+<article class="card group bg-white relative overflow-hidden pb-2 hover:cursor-pointer" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="overflow-hidden relative rounded">
+        <img src="{{image|resize(imageWidth, imageHeight, {mode:'crop'})}}" width="{{imageWidth}}" height="{{imageHeight}}"  itemprop="image" alt="{{title}}" loading="lazy" class="w-full duration-700 group-hover:scale-110">
+        {% if category and category.name != 'uncategories' %}
+        <a href="{{category.url|default('#')}}" title="{{category.name}}" class="uppercase text-white text-xs absolute z-10 left-0 bottom-3 pl-3 py-1 pr-2 bg-black">{{category.name}}</a>
+        {% endif %}
+    </header>
+    <div class="w-full py-4">
+        <a href="{{url}}" title="{{title}}" itemprop="name" class="text-sm font-medium stretched-link group-hover:text-primary">{{title}}</a>
+        {% if published_at or author %}
+        <p class="text-gray-600 mt-1 text-xs mb-0">
+            {% if author %}
+            <span itemprop="author" class="font-medium">{{author}}</span>
+            {% endif %}
+            {% if published_at %}
+            &nbsp;/&nbsp;<time datetime="{{published_at|date('Y-m-d')}}" itemprop="datePublished">
+            {{published_at|date('F j Y')}}
+            </time>
+            {% endif %}
+        </p>
+        {% endif %}
+    </div>
+</article>

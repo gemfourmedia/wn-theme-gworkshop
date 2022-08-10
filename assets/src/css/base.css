@@ -2,14 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+    html,
+    body {
+        overscroll-behavior: none;
+    }
+    body {
+        @apply bg-slate-50
+    }
+
+    /* Heading styles */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading mb-2;
+    }
+
+    h1 {
+        @apply text-4xl;
+    }
+
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-xl;
+    }
+
+    h4 {
+        @apply text-lg;
+    }
+
+    /* Paragraphs and spacing */
+    p {
+        @apply mb-4;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+
+    p + h1,
+    p + h2,
+    p + h3,
+    p + h4,
+    p + h5,
+    p + h6 {
+        @apply mt-5;
+    }
+
+    iframe {
+        @apply w-full aspect-video
+    }
+
+}
 .main-container {
     @apply max-w-6xl px-4 mx-auto;
 }
 
+/* Main navigation */
 .mainnav li > .nav-link {
-    @apply block py-2 hover:text-blue-800;
+    @apply block text-primary py-2 hover:text-secondary focus:text-secondary uppercase font-medium;
 }
+.mainnav li > .nav-link.active {
+    @apply underline;
+}
+/* Navigation */
+.nav > li > .nav-link {
+    @apply block text-primary py-2 hover:text-secondary focus:text-secondary uppercase font-medium text-sm;
+}
+.nav > li > .nav-link.active {
+    @apply text-secondary;
+}
+
 
 .section {
     @apply py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16;
+}
+.section-cover {
+    @apply py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14
+}
+
+.stretched-link {
+    @apply after:block after:w-full after:h-full after:top-0 after:left-0 after:absolute
+}
+
+.sidebar-title{
+    @apply uppercase font-medium text-lg mb-4 inline-flex before:block before:w-2 before:h-2 before:bg-secondary items-center before:mr-2 before:rounded-full
+}
+
+.mainnav > li > .nav-link {
+    @apply inline-flex py-1 lg:py-2 
 }

@@ -1,0 +1,29 @@
+{% set posts = __SELF__.items %}
+
+{% put cover %}
+<section class="section-cover bg-primary text-white">
+    <div class="main-container flex items-center justify-center flex-col">
+        <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-0 sm:mb-3">{{this.page.title}}</h1>
+        {% partial __SELF__~'::_breadcrumb' title=category.name %}
+    </div>
+</section>
+{% endput %}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-5 lg:gap-6 xl:gap-8" itemscope itemtype="http://schema.org/Blog" id="{{__SELF__}}">
+    {% for post in posts %}
+        {% 
+            partial 'ui/cards/card-article'
+            image=post.main_image.getPath()
+            title=post.title
+            published_at=post.published_at
+            author=post.author.name
+            url=post.url
+            content=post.introtext
+            imageWidth=1280
+            imageHeight=720
+            category=post.category
+        %}
+    {% endfor %}
+</div>
+
+{% partial 'ui/pagination' items=posts %}

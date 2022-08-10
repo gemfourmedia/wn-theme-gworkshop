@@ -1,0 +1,22 @@
+<ul class="space-y-2">
+    {% for post in items %}
+    <li class="relative inline-flex p-2 bg-white rounded shadow w-full hover:shadow-lg group">
+        <img src="{{post.main_image.thumb(80, 80, {mode:'crop'})}}" loading="lazy" width="80" height="80" alt="{{post.title}}" class="mr-2 rounded">
+        <div>
+            <a href="{{post.url}}" title="{{post.name}}" class="font-medium stretched-link block group-hover:text-secondary">{{post.title}}</a>
+            {% if post.published_at or post.author %}
+            <p class="text-sm text-gray-600 mt-1">
+                {% if post.author %}
+                <span itemprop="post.author" class="font-medium">{{post.author.name}}</span>
+                {% endif %}
+                {% if post.published_at %}
+                &nbsp;/&nbsp;<time datetime="{{post.published_at|date('Y-m-d')}}" itemprop="datePublished">
+                {{post.published_at|date('F j Y')}}
+                </time>
+                {% endif %}
+            </p>
+            {% endif %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>

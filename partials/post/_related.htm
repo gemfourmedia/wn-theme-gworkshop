@@ -1,0 +1,24 @@
+{% if relatedItems|length > 0 %}
+<section class="section bg-white">
+    <div class="main-container">
+        <h3 class="sidebar-title">Related Posts</h3>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-5">
+            {% for item in relatedItems %}
+            <li>
+                {% partial 
+                    'ui/cards/card-default' 
+                    image=item.main_image.getPath()
+                    imageWidth=400
+                    imageHeight=300
+                    title=item.title
+                    published_at=item.published_at
+                    author=item.author.name
+                    content=item.introtext
+                %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>>
+
+{% endif %}

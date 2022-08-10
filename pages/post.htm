@@ -1,0 +1,10 @@
+title = "Post"
+url = "/post/:slug"
+layout = "default"
+is_hidden = 0
+
+[gItem post]
+slug = "{{ :slug }}"
+setPageMeta = 1
+==
+{% component 'post' %}
