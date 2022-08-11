@@ -1,0 +1,9 @@
+{% if tags|length > 0 %}
+<ul class="flex mb-4 space-x-3">
+    {% for tag in tags %}
+    <li>
+		<a href="{{tag.url}}" title="{{tag.name}}" class="text-blue-400 text-sm lowercase">#<span class="underline">{{tag.name}}</span></a>
+    </li>
+	{% endfor %}
+</ul>
+{% endif %}

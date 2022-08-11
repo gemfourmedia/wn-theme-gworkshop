@@ -24,16 +24,18 @@
             <div class="font-medium italic mb-6">{{item.introtext|raw}}</div>
             {% endif%}
 
+            {% partial __SELF__~'::_toc' toc=item.toc %}
             <div class="fr-view">
                 {{item.content|raw}}
             </div>
-
+            
             {% partial __SELF__~'::_gallery' gallery=item.gallery %}
             {% partial __SELF__~'::_embeds' embeds=item.embeds %}
             {% partial __SELF__~'::_attachments' attachments=item.attachments %}
         </div>
 
         <div class="card-footer  p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
+            {% partial __SELF__~'::_tag' tags=__SELF__.tags() %}
             {% partial 'ui/sharing' item=item %}
         </div>
     </article>
