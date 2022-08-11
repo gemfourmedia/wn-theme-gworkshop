@@ -1,6 +1,23 @@
-# gworkshop Winter CMS Theme
+# GWorkshop Winter CMS Theme
 
 This theme uses [Winter Mix](https://wintercms.com/docs/console/asset-compilation) for asset compilation. It also uses [Tailwind CSS](https://tailwindcss.com/).
+
+## Plugin styled
+
+* [GemFourMedia.GContent](https://github.com/gemfourmedia/wn-plugin-gcontent)
+* [GemFourMedia.GCompany](https://github.com/gemfourmedia/wn-plugin-gcompany)
+* [GemFourMedia.GFAQs](https://github.com/gemfourmedia/wn-plugin-gfaqs)
+* [GemFourMedia.GCover](https://github.com/gemfourmedia/wn-plugin-gcover)
+* [Winter.Search](https://github.com/wintercms/wn-search-plugin)
+* [Winter.Translate](https://github.com/wintercms/wn-translate-plugin)
+* [Magic Form](https://skydiver.github.io/october-plugin-forms/docs/introduction/)
+
+## Features
+
+* Mobile friendly
+* SEO standard
+* UI/UX improved
+
 
 ## Getting Started
 
