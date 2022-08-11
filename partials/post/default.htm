@@ -24,7 +24,9 @@
             <div class="font-medium italic mb-6">{{item.introtext|raw}}</div>
             {% endif%}
 
-            {{item.content|raw}}
+            <div class="fr-view">
+                {{item.content|raw}}
+            </div>
 
             {% partial __SELF__~'::_gallery' gallery=item.gallery %}
             {% partial __SELF__~'::_embeds' embeds=item.embeds %}
