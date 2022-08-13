@@ -1,0 +1,6 @@
+{% set item = __SELF__.item %}
+
+{% if item %}
+    {% partial __SELF__~'::'~item.mode item=item setting=item.params %}
+{% endif %}
+

@@ -1,0 +1,63 @@
+{% set mediaItems = item.mediaItems %}
+
+<section id="{{__SELF__}}" class="p-0 m-0 relative">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for media in mediaItems %}
+            <div class="swiper-slide carousel-item-{{loop.index0}}  w-full relative" >
+                {% partial __SELF__~'::_media_'~media.type media=media item=item setting=setting %}
+                {% partial __SELF__~'::_content' media=media %}
+            </div>
+            {% endfor %}
+            {% if setting.carousel.indicators %}
+            <div class="swiper-pagination"></div>
+            {% endif %}
+        </div>
+
+        {% if mediaItems|length > 0 and setting.carousel.controls %}
+        <button class="carousel-control-prev h-full w-2/12 p-2 flex absolute top-0 left-0 justify-center items-center z-[2] text-white opacity-60 hover:opacity-100">
+            <svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14">
+                <path d="M30.5879 60.1759C46.9289 60.1759 60.1759 46.9289 60.1759 30.5879C60.1759 14.247 46.9289 1 30.5879 1C14.247 1 1 14.247 1 30.5879C1 46.9289 14.247 60.1759 30.5879 60.1759Z" class="stroke-current" fill="none" fill-opacity="0.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30.588 18.7528L18.7528 30.5879L30.588 42.4231" class="stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M42.4231 30.5879L18.7528 30.5879" class="stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>            
+        </button>
+        <button class="carousel-control-next h-full w-2/12 p-2 flex absolute top-0 right-0 justify-center items-center z-[2] text-white opacity-60 hover:opacity-100" type="button">
+            <svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14">
+                <path d="M30.5879 60.1759C46.9289 60.1759 60.1759 46.9289 60.1759 30.5879C60.1759 14.247 46.9289 1 30.5879 1C14.247 1 1 14.247 1 30.5879C1 46.9289 14.247 60.1759 30.5879 60.1759Z" class="stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30.5879 42.423L42.4231 30.5879L30.5879 18.7527" class="stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.7528 30.5879H42.4232" class="stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>            
+        </button>
+        {% endif %}
+    </div>
+</section>
+
+{% put scripts %}
+<script src="{{'assets/vendors/swiper/swiper-bundle.min.js'|theme}}" type="text/javascript"></script>
+<script type="text/javascript">
+    const coverSwiper = new Swiper('#{{__SELF__}} .swiper', {
+        direction: 'horizontal',
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: {{setting.carousel.crossfade ? 'true' : 'false'}}
+        },
+        speed: {{setting.carousel.interval|default(3000)}},
+        autoplay: {
+            delay: {{setting.carousel.interval|default(3000)}},
+        },
+        {% if setting.carousel.indicators %}
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        {% endif %}
+        // Navigation arrows
+        navigation: {
+            nextEl: '#{{__SELF__}} .carousel-control-next',
+            prevEl: '#{{__SELF__}} .carousel-control-prev',
+        }
+    });
+</script>
+{% endput %}

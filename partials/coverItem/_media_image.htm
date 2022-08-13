@@ -1,0 +1,10 @@
+<div class="cover-media-box" style="--aspect-ratio:{{setting.media_width}}/{{setting.media_height}};">
+	<img
+		src="{{media.image.getThumb(setting.media_width|default(1920), setting.media_height|default(780), {'mode': 'crop'})}}"
+		class="cover-media-item"
+		loading="lazy"
+		width="{{setting.media_width|default(1920)}}"
+		height="{{setting.media_height|default(780)}}"
+	/>
+	{% partial __SELF__~'::_content' media=media %}
+</div>

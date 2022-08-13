@@ -1,0 +1,5 @@
+<div class="cover-media-box" style="--aspect-ratio:{{setting.media_width}}/{{setting.media_height}};">
+	<video src="{{media.video.path}}" class="cover-media-item" autoplay nocontrols loop muted playsinline></video>
+	{% partial __SELF__~'::_content' media=media %}
+</div>
+

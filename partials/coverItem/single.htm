@@ -1,0 +1,5 @@
+{% set media = item.single_media %}
+
+<section id="{{__SELF__}}" class="p-0 m-0 relative">
+    {% partial __SELF__~'::_media_'~media.type media=media %}
+</section>

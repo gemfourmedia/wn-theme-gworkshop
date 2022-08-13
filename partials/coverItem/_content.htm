@@ -1,0 +1,26 @@
+{% if media.params.show_title or media.params.show_subtitle or media.params.show_desc or media.params.enable_links %}
+<div class="cover-media-content w-full h-full absolute z-10 top-0 left-0 p-4 md:p-12 lg:p-20 {{media.params.content_position}} {{media.params.invert ? 'invert-0' : ''}} ">
+	<div class="media-content-inner lg:max-w-md  {{media.params.invert ? 'text-gray-100' : 'text-gray-600'}}">
+        {% if media.subtitle %}
+            <p class="text-lg uppercase">{{media.subtitle}}</p>
+        {% endif %}
+        {% if media.title %}
+            <h2 class="text-xl md:text-4xl leading-normal font-medium {{media.params.invert ? 'text-white' : 'text-gray-900'}}">{{media.title}}</h2>
+        {% endif %}
+        {% if media.desc %}
+            <div>
+                {{media.desc|raw}}
+            </div>
+        {% endif %}
+        {% if media.params.enable_link and media.params.links|length > 0 %}
+            <ul class="flex flex-row gap-3 mt-6 md:mt-10">
+                {% for link in media.params.links %}
+                <li>
+                    <a href="{{link.url}}" class="btn btn-primary" title="{{link.text}}">{{link.text}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endif %}

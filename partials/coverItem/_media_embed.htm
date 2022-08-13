@@ -1,0 +1,4 @@
+<div class="cover-media-box" style="--aspect-ratio:{{setting.media_width}}/{{setting.media_height}};">
+	{{media.embed|raw}}
+	{% partial __SELF__~'::_content' media=media %}
+</div>
